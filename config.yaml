@@ -1,0 +1,70 @@
+cfg: 
+  test_timesteps: 500
+  dim_mults: [1,2,2]
+  unet_dim: 128
+  num_res_blocks : 3
+
+  objective: pred_x0
+  loss: l1
+  residualmode: l1
+  OpenaiUnet: True # use openai unet
+  conv_resample: True
+  noisetype: simplex
+  dropout_unet: 0.0  
+
+  scheduleLR: False 
+  patienceLR: 10
+  
+  earlyStopping: False 
+  patienceStopping: 50
+
+  erodeBrainmask: True
+  medianFiltering: True
+  threshold: auto # 'auto' for autothresholding, any number for manually setting
+
+  patch_size: 48 # size of the patches 
+  grid_boxes: True # sample boxes from a fixed grid
+  inpaint: True # solve inpainting task -- Loss calculation only for the patched region
+  imageDim: [80,256,256] 
+  rescaleFactor: 1
+
+  num_folds: 1
+  num_heads: 1
+  num_workers: 4
+  batch_size: 1
+  lr : 0.0001
+
+  cropMode: 'isotropic'
+  modelpath: ${data_dir}/Data/pretrained_2D_model/
+
+  # Augmentations
+  randomRotate: False
+  rotateDegree: 5
+  horizontalFlip: False
+  randomBrightness: False
+  brightnessRange: (0.75,1.25)
+  randomContrast: False
+  contrastRange: (0.75,1.25)
+
+  preLoad: True
+  curvatureFlow: True
+  percentile: True
+  pad: True
+  permute: False
+
+  mode: t1
+  resizedEvaluation: True
+
+  trainer:
+  max_epochs: 1600
+  precision: 32 
+
+  name : DDPM_2D_patched
+  seed: 3141
+
+  train_base_dir: /home/kbh/Downloads/nii
+  csv_path: ./data/anomal.csv
+  modality: FLAIR
+  gpus: 0
+  
+  checkpoint_dir: ./checkpoints
