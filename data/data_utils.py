@@ -64,7 +64,7 @@ def load_nii_nn(path: str, size: int = None,
 
     if slice_range is not None:
         center = vol.shape[2]//2
-        vol = vol[center-30:center+50]
+        vol = vol[center-2:center+2]
         assert vol.shape[0] > 0
 
     #vol = rectangularize(vol)

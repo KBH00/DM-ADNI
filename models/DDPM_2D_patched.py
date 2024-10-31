@@ -76,8 +76,7 @@ class DDPM_2D(LightningModule):
 
     def training_step(self, batch, batch_idx: int):
         # process batch
-        input = batch['vol'][tio.DATA].squeeze(-1)
-
+        input = batch.squeeze(0)
 
         # generate bboxes for DDPM 
         if self.cfg.get('grid_boxes',False): # sample boxes from a grid
@@ -104,6 +103,7 @@ class DDPM_2D(LightningModule):
     def validation_step(self, batch: Any, batch_idx: int):
         #input = batch['vol'][tio.DATA].squeeze(-1)
         input = batch.squeeze(0)
+        print(input.shape)
         #input = batch[:, :, 0, :, :]  # Selects the first slice along depth
 
         # generate bboxes for DDPM 
@@ -217,7 +217,6 @@ class DDPM_2D(LightningModule):
 
             reco = reco_patched.clone()
 
-        
         
         AnomalyScoreComb.append(loss_diff.cpu())
         AnomalyScoreReg.append(AnomalyScoreComb) # dummy

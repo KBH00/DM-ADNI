@@ -123,8 +123,8 @@ dependencies:
       - shellingham==1.5.4
       - simpleitk==2.4.0
       - six==1.16.0
-      - smmap==5.0.1
-      - stringzilla==3.10.6
+      - smmap==5.0.1conda env create -f environment.yml
+
       - sympy==1.13.1
       - taming-transformers==0.0.1
       - tensorboard==2.18.0
@@ -133,9 +133,8 @@ dependencies:
       - tifffile==2024.9.20
       - torch==2.5.1
       - torchaudio==2.5.1
-      - torchio==0.20.1
-      - torchmetrics==1.5.1
-      - torchvision==0.20.1
+      - torchio==0.20.1conda env create -f environment.yml
+
       - tqdm==4.66.6
       - triton==3.1.0
       - typer==0.12.5
